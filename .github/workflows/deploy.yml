@@ -39,10 +39,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build VitePress static site
+      - name: Build VitePress static site & create .nojekyll
         run: |
           pnpm run docs:build
-          # 在打包目录内生成.nojekyll，彻底关闭Jekyll解析
+          mkdir -p .vitepress/dist
           touch .vitepress/dist/.nojekyll
 
       - name: Upload build artifact
